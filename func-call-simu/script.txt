@@ -1,0 +1,27 @@
+🧑🏻‍💻 User: I'd like to order the 'My AI is Smarter Than Your Honor Student' t-shirt in size M and color White please.
+
+💻 AI: Great news! The 'My AI is Smarter Than Your Honor Student' t-shirt in size M and color White is available. Here are the details:
+
+    Name: My AI is Smarter Than Your Honor Student
+    Size: M
+    Color: White
+    Price: $19.99
+    Available Quantity: 6
+    Would you like me to add it to your cart?
+
+🧑🏻‍💻 User: Yes, please add it to my cart.
+
+💻 AI: It seems that your cart has been successfully loaded with the following items:
+
+    Item: My AI is Smarter Than Your Honor Student
+    Size: M
+    Color: White
+    Price: $19.99
+    Quantity: 1
+
+If you need any further assistance or would like to make changes to your cart, just let me know!
+
+🧑🏻‍💻 User: I'd like to proceed to checkout.
+
+💻 AI: Your order for "My AI is Smarter Than Your Honor Student" in size M and color White has been successfully placed. 
+The total amount is $19.99. Thank you for your purchase! If you need any further assistance, feel free to ask.
