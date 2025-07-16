@@ -55,7 +55,7 @@ function getProductImage(productName: string): string {
   const imageMap: { [key: string]: string } = {
     "My AI is Smarter Than Your Honor Student": "/images/my-ai-is-smarter.png",
     "Keep Calm and Trust the Neural Network": "/images/keep-calm.png",
-    "I’m Just Here for the Deep Learning": "/images/im-just-here-dl.png",
+    "I'm Just Here for the Deep Learning": "/images/im-just-here-dl.png",
   }
   return imageMap[productName] || "/images/default.svg";
 }
