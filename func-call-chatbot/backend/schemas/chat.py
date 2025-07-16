@@ -7,4 +7,4 @@ class ChatMessage(BaseModel):
 
 class ChatResponse(BaseModel):
     response: str
-    session_id: str
+    session_id: Optional[str] = None

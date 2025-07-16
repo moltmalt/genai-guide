@@ -65,7 +65,7 @@ function Product() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/products")
+    fetch("http://127.0.0.1:8000/api/tshirts")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data)

@@ -17,6 +17,6 @@
     {"id": 14, "name": "Keep Calm and Trust the Neural Network", "size": "L", "color": "Black", "price": 18.99, "quantity": 4},
     {"id": 15, "name": "Keep Calm and Trust the Neural Network", "size": "L", "color": "Pink", "price": 18.99, "quantity": 2},
 
-    {"id": 16, "name": "I’m Just Here for the Deep Learning", "size": "S", "color": "White", "price": 17.99, "quantity": 5},
-    {"id": 17, "name": "I’m Just Here for the Deep Learning", "size": "M", "color": "White", "price": 17.99, "quantity": 4}
+    {"id": 16, "name": "I'm Just Here for the Deep Learning", "size": "S", "color": "White", "price": 17.99, "quantity": 5},
+    {"id": 17, "name": "I'm Just Here for the Deep Learning", "size": "M", "color": "White", "price": 17.99, "quantity": 4}
 ]
