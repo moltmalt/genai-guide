@@ -80,8 +80,8 @@ function Chat() {
           )}
           <div ref={messagesEndRef} />
         </div>
-
-        <div className="chat-input-area">
+      </div>
+      <div className="chat-input-area">
           <form className="chat-form" onSubmit={sendMessage}>
             <textarea
               value={input}
@@ -102,7 +102,6 @@ function Chat() {
             </button>
           </form>
         </div>
-      </div>
     </div>
   )
 }

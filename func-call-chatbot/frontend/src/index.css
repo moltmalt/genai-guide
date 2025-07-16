@@ -192,15 +192,12 @@ body {
 .chat-card {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  min-height: 300px;
 }
 
 .chat-container {
   display: flex;
   flex-direction: column;
-  flex: 1;
-  min-height: 0;
+  height: 100%
 }
 
 .chat-messages {
@@ -212,7 +209,7 @@ body {
   gap: 12px;
   background: #fafafa;
   min-height: 0;
-  max-height: 300px;
+  height: 100%;
   scroll-behavior: smooth;
 }
 
@@ -411,7 +408,7 @@ body {
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
   .main-grid {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -461,7 +458,6 @@ body {
   }
 
   .products-card,
-  .chat-card,
   .cart-card,
   .order-card {
     min-height: 300px;
