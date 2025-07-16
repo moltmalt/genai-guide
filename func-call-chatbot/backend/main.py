@@ -1,11 +1,14 @@
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
-from typing import Optional, List
-from func_call_oop import TShirtDatabase, TShirtChatbot
-from decimal import Decimal
 from fastapi import WebSocket, WebSocketDisconnect
+
+from models.tshirt import TShirtDatabase
+from models.chatbot import TShirtChatbot
+
+from schemas.cart import CartItem
+from schemas.chat import ChatMessage, ChatResponse
+from schemas.tshirt import TShirtRequest
 
 import uvicorn
 import os, json
@@ -25,33 +28,6 @@ app.add_middleware(
 )
 
 BASE_DIR = "../mock-db"
-
-class TShirtRequest(BaseModel):
-    name: str
-    size: str
-    color: str
-
-class CartItem(BaseModel):
-    name: str
-    quantity: int
-    size: str
-    color: str
-    price: Decimal
-
-class OrderRequest(BaseModel):
-    name: str
-    quantity: int
-    size: str
-    color: str
-    price: Decimal
-
-class ChatMessage(BaseModel):
-    message: str
-    session_id: Optional[str] = None
-
-class ChatResponse(BaseModel):
-    response: str
-    session_id: str
 
 database = TShirtDatabase()
 chatbot_sessions = {}
@@ -156,7 +132,7 @@ async def internal_error_handler(request, exc):
         content={"message": "Internal server error"}
     )
 
-# WebSocket support for real-time chat (optional)
+# WebSocket support for real-time chat 
 
 @app.websocket("/ws/chat/{session_id}")
 async def websocket_chat(websocket: WebSocket, session_id: str):

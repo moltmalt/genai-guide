@@ -2,39 +2,7 @@ import os
 import json
 from openai import OpenAI
 from dotenv import load_dotenv
-from func import get_t_shirt, add_to_cart, place_order
-from IPython.display import Markdown
-
-
-class TShirtDatabase:
-
-    def __init__(self):
-        self.function_map = {
-            "get_t_shirts": get_t_shirt,
-            "add_to_cart": add_to_cart,
-            "place_order": place_order
-        }
-
-    def get_t_shirts(self, name, size, color):
-        return self.function_map["get_t_shirts"](name=name, size=size, color=color)
-    
-    def add_to_cart(self, name, size, color, price, quantity):
-        return self.function_map["add_to_cart"](
-            name=name, 
-            size=size, 
-            color=color, 
-            price=price,
-            quantity=quantity, 
-        )
-    
-    def place_order(self, name, size, color, price, quantity):
-        return self.function_map["place_order"](
-            name=name, 
-            size=size, 
-            color=color, 
-            price=price,
-            quantity=quantity
-        )
+from models.tshirt import TShirtDatabase
 
 class TShirtChatbot:
     
@@ -188,17 +156,14 @@ class TShirtChatbot:
             
             result = self.handle_function_call(response)
             
-            # Add function result to history
             self.conversation_history.append({
                 "type": "function_call_output",
                 "call_id": response.call_id,
                 "output": str(result),
             })
             
-            # Get next response
             response = self.get_completion(self.conversation_history)
         
-        # Handle regular message response
         if response.type == "message":
             bot_response = response.content[0].text
             self.conversation_history.append({
@@ -227,21 +192,15 @@ class TShirtChatbot:
             
             print(f"👤 (You): {user_input}")
             
-            # Process user input and get bot response
             bot_response = self.process_user_input(user_input)
             print(f"🤖: {bot_response}")
         
-        # Print conversation history at the end
         print("\n" + "="*50)
         print("CONVERSATION HISTORY:")
         print("="*50)
         print(json.dumps(self.get_conversation_history(), indent=2))
 
 
-# Usage example
 if __name__ == "__main__":
-    # Initialize the chatbot
     chatbot = TShirtChatbot()
-    
-    # Start conversation
     chatbot.start_conversation()

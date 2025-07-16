@@ -6,5 +6,13 @@
     "color": "White",
     "price": "39.98",
     "quantity": 2
+  },
+  {
+    "id": 2,
+    "name": "Keep Calm and Trust the Neural Network",
+    "size": "S",
+    "color": "Black",
+    "price": "18.99",
+    "quantity": 1
   }
 ]
