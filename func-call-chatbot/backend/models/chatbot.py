@@ -3,6 +3,7 @@ import json
 from openai import OpenAI
 from dotenv import load_dotenv
 from models.tshirt import TShirtDatabase
+from routers.middleware import KnownAppError
 
 class TShirtChatbot:
     
@@ -13,8 +14,16 @@ class TShirtChatbot:
         self.client = OpenAI(api_key=self.api_key)
         self.database = TShirtDatabase()
         self.conversation_history = []
+        self.function_map = self._define_function_map()
         self.tools = self._define_tools()
         self._initialize_system_message()
+
+    def _define_function_map(self):
+        return {
+            "get_t_shirts": self.database.get_t_shirts,
+            "add_to_cart": self.database.add_to_cart,
+            "place_order": self.database.place_order
+        }
     
     def _define_tools(self):
         return [
@@ -128,19 +137,14 @@ class TShirtChatbot:
     
     def handle_function_call(self, response):
         func_name = response.name
-        
-        if func_name == "get_t_shirts":
+
+        if func_name in self.function_map:
             args = json.loads(response.arguments)
-            result = self.database.get_t_shirts(**args)
-        elif func_name == "add_to_cart":
-            args = json.loads(response.arguments)
-            result = self.database.add_to_cart(**args)
-        elif func_name == "place_order":
-            args = json.loads(response.arguments)
-            result = self.database.place_order(**args)
+            result = self.function_map[func_name](**args)
         else:
-            result = f"Unknown function: {func_name}"
-        
+            result = f"No such function {func_name}"
+            KnownAppError(f"No such function {func_name}")
+
         return result
     
     def process_user_input(self, user_input):
