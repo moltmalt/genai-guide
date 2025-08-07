@@ -13,7 +13,7 @@ import {
   Heart,
   Cpu
 } from "lucide-react"
-import "../sidebar.css"
+import "../styles/sidebar.css"
 
 interface SidebarProps {
   activeSection: string

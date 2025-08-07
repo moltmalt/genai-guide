@@ -1,5 +1,5 @@
 "use client"
-import "../products.css"
+import "../styles/products.css"
 
 import { useEffect, useState } from "react"
 import { Package, Shirt, ShoppingCart, Heart } from "lucide-react"

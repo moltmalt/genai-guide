@@ -1,5 +1,5 @@
 "use client"
-import "../index.css"
+import "../styles/index.css"
 
 import { useEffect, useState } from "react"
 import { Package, ShoppingBag, Calendar, DollarSign, Trash2 } from "lucide-react"

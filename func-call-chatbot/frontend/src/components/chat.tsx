@@ -1,6 +1,6 @@
 "use client"
 
-import "../index.css"
+import "../styles/index.css"
 import type React from "react"
 
 import { useState, useRef, useEffect } from "react"

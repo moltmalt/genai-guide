@@ -1,7 +1,7 @@
 "use client"
-import "../products.css"
+import "../styles/products.css"
 
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { Heart, Trash2 } from "lucide-react"
 import { apiCall } from "../utils/api"
 

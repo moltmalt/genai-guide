@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Bot, X } from "lucide-react"
 import Chat from "./chat"
-import "../products.css" 
+import "../styles/products.css" 
 
 export default function FloatingChat() {
   const [open, setOpen] = useState(false)

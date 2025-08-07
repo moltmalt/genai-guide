@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import "../auth.css"
+import "../styles/auth.css"
 
 import { useState, useCallback } from "react"
 import { Eye, EyeOff, Mail, Lock, AlertCircle, MessageCircle, Globe } from "lucide-react"
@@ -65,7 +65,6 @@ export default function Login({ onLogin, loading: externalLoading }: LoginProps)
       })
 
       if (!response.ok) {
-        // Handle different HTTP status codes with appropriate messages
         if (response.status === 401 || response.status === 500) {
           throw new Error("Incorrect email/password")
         } else if (response.status === 422) {

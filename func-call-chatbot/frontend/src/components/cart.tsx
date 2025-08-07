@@ -1,5 +1,5 @@
 "use client"
-import "../index.css"
+import "../styles/index.css"
 
 import { ShoppingCart, Package, CreditCard } from "lucide-react"
 import { apiCall } from "../utils/api"
