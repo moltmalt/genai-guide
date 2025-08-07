@@ -1,30 +1,28 @@
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
-from models.tshirt import TShirtDatabase
+from models.database import Database
 from schemas.tshirt import TShirtRequest
 from routers.middleware import KnownAppError
+from supabase_client import get_supabase_client
 
 import os, json
 
 router = APIRouter()
-BASE_DIR = "func-call-chatbot/mock-db"
-database = TShirtDatabase()
+database = Database()
 
 @router.get("/tshirts")
 def get_all_shirts():
-    file_path = os.path.join(BASE_DIR, "shirt.json")
-    with open(file_path, "r") as f:
-        data = json.load(f)
-    return JSONResponse(data)
+    result = database.get_all_shirts()
+    return JSONResponse(content=result)
 
 @router.post("/tshirts/search")
-async def get_t_shirts(request: TShirtRequest):
+async def get_t_shirt(request: TShirtRequest):
     try:
-        result = database.get_t_shirts(
-            name = request.name,
+        result = database.get_t_shirt(
+            name =  request.name,
             size = request.size,
-            color =  request.color
+            color = request.color
         )
-        return {"success": True, "data": result}
+        return JSONResponse(content=result)
     except Exception as e:
-        raise KnownAppError(str(e), status_code = 500)
+        KnownAppError(str(e), status_code=500)
